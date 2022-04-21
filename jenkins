@@ -1,0 +1,76 @@
+JENKINS:
+====================================================================
+	  --> jankins is a built upon java
+          --> Continuous intigration / continuous delivery/Deployee
+          --> This is plugin-based tool
+          --> Configuration jobs
+
+Build:
+           jar/war/ear --> building
+
+Deploy: --> copy the artifact to destination system
+        --> run the artifact and start the serviece 
+
+Environments: dev/development  ---> dev team do smoke test with dummy data
+              QA/Test/Sit      ---> intigration with database.
+              Stage/pre-prod   ---> replica of prod/same as prod.
+              Prod/production  ---> live environment/customer facing environment.
+
+Continuous Intigration :  develop ---->checkin ---->build ---->upload packages to artifactory ---->dev deployment
+                    
+Continuos delivery :- develop ---->checkin---->build---->upload packages to artifactory ---->dev deployment ---->smoke testing
+                     ---->qa testing ---->automation testing----> pre prod----> recursion testing ---->performance testing.
+
+Continous deployment :- develop ---->checkin---->build---->upload packages to artifactory ---->dev deployment ---->smoke testing
+             ---->qa testing ---->automation testing ---->pre prod ---->recursion testing ---->change request approval --->production deployment.
+                                                         
+
+INSTALLATION JENKINS
+====================
+--> yum install git 
+--> yum install maven
+--> yum update
+--> yum install wget
+--> first download java war file from google
+--> https://www.jenkins.io/download/
+--> wget warfile url 
+--> to set the path of java
+--> export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+--> export PATH=$PATH:/usr/lib/jvm/java-1.8.0-openjdk/bin
+--> goto the place where jenkins.war file is there
+--> start the jenkins command with java -jar jenkins.war
+--> copy public ip of master and run with port number 8080
+--> its asking password for jenkins install setup
+--> get password using with cat command
+--> paste into unlock jenkins 
+--> download packages
+ 
+
+
+
+============================================================================================================================================
+
+creating a job in jenkins:-
+--------------------------------------------------
+connect to linux box with instance(public key)
+login to jenkins
+go to jenkins and select dashboard
+select new item give new job name
+select project type (freestyle or pipeline or multi etc.....)
+select source code management
+git -- to give repository url(git)
+credentials -- repo name(umamaheswararao9959)
+add build step --> invoke top level maven tasks
+give mvn verion and clean package 
+press save button
+then hit on build option
+if build is successful
+
+incase if u got any error like(there is no pom.xml)
+then go to root$ cd /var/lib/jenkins/workspace/filename in git
+cd filename--> ls -lrt
+then disply pom.xml 
+pwd -- copy the path
+
+cp -rp source path/pom.xml(/var/lib/jenkins/workspace/filename/pom.xml) target path(/var/lib/jenkins/workspace/filename(jenkins))
+
