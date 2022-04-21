@@ -1,0 +1,253 @@
+cronjob
+--------------
+* * * * *
+
+*--minutes(0-59)
+*--hours(0-23)
+*--day of month(1-30,31)
+*--month(1-12)
+*--day of week(1-7)
+
+00 9 * * 1-5 
+ess       :                             Buma@123
+aws       :   maheswarrao007@gmail.com	Bathina@123
+aws       :   hiuma48@gmail.com         Bathina@123
+github id :   umamaheswararao9959       Bathina@123 hiuma48@gmail.com 
+docker id :   umamaheswararao9959       Bathina@123 maheswarrao007@gmail.com
+===============================================================================================================================================
+
+1) ls    --> list all the files and directories (ls)
+   ls -lrt --> ls= list, lrt= long recursive time.
+   ll --> long list.
+
+2) pwd   --> to display present working directory, (pwd)
+
+3) cd    --> change directory from one directory to another directory (cd directory name)
+
+4) mv    -->  it is used for rename of file name ordirectory (mv old file name new file name)
+   mv    -->  it is used to move a file or directory from one place to another place, (mv sourcefile targetfile)
+   
+5) mkdir --> it is used to create a new directory (mkdir directory name)
+
+6) du -h --> to find the size of the file (du-h file name) or disk usage
+             du--> its display disk utilization , h--> it is a human readable format.
+ 
+7) df    --> (disk file system) it is used to display the disk space used in the file system
+
+8) chmod --> change the access mode of a file or directory permission to read,write,exicution (chmod -R *** filename).
+             R ---> recursively = repetedly.
+             u ---> owner of the file
+             g ---> it reprsents group, apply to all members of group.
+             o ---> owners who r not members of group or owner.
+             a ---> those who r all of the above.
+             r ---> only read
+             w ---> only write
+             x ---> only exicution
+
+9) find        --->it  will search our file in all directoris and it will gives the location of the file 
+                        (find /var/log/nginx -type f -name '*.log.gz') (example:  find /home/ec2-user/dir "file name")
+   find and disply    ---> find -type f -name "filename" -exec ls -lrt{}\;
+   find and remove    ---> find -type f -name "filename" -exec rm -rf{}\;
+                   to find specific size of the file in a directory --->  find  /dirname/ -type -f -size +100mb -exec cp -nv {} target path \;
+
+10) ssh command     --> it is a protocol used to securily connect to a (host) remote server/system. 
+          	        it transfer the data in encrypted form between the host and client (ssh -i redhat.pem ec2-user@public ip)
+
+11) scp(secure copy)--> it is used to copy a file between two servers in a secure way. 
+		        its allows secure transfering of files in between local host and remote host(scp -i pemfile sourcefile.txt destination@ip address)	
+                        ( scp filename b.umamaheswararao@ip:/home/                                  (scp -i pemfile -rp source path destination path) 
+12) find ip address --> ifconfig -a (it displaying current network configuration in formation) or (ip addr show)
+
+13) find flavour of linux --> cat /etc/os-release
+
+14) kill      --> it is used to terminated process manually. this command sends a signal to a process which is terminates the process
+			( kill -9 process id)
+
+15) crontab   -->  it is used for the job scheduler.(* * * * * source path > target path) after that u can give (sh source path > target path)
+				min   houre   date of month    month   day of week   path	
+
+16) sudo      --> create user as a root permission(sudo filename). switch to root user from ec2-user.(sudo su -)
+              -->   /etc/groups  --- root:root filename or directory name
+              -->   /etc/sudoers --- root:<all> <all> (root permisions)
+
+17) ps -ef    --> it is used to list the currently running processes, processid (ps --> process status)
+                (if check particular process is running or not then use ps -ef | grep "process id" or "process name" )
+
+18) zip       --> it is used to compress the file and reduce the file size and used as a file package utility, if u want to transfer the file 
+                  faster, then ZIP the file and transfer. ( gzip filename)	uncompress ----> (gzip -d file.gz or gunzip file.gz)
+
+19) grep      --> it is used for filter the content of a file which makes our search easy grep with pipe (grep -v<word> <file name>) (GLOBAL REGULAR EXPRESSION PRINT) 
+
+20) | pipe    --> it is used to combine two or more commands, and in this, the output of one command acts as input to another command,
+                  and this command's output may act as input to the next
+
+21) tar       --> it is used to create archive and extract the archive files. we can use linux tar command to create compressed or uncompressed 
+                  archive files and also maintain, modified. ( tar -cvzf filename.tar sourcefile.zip, uncompress---> tar -xvzf filename.tar)
+
+22) creating user: sudo useradd name
+                   sudo passwd username 
+
+23) man command ---> The man command displays the ‘man pages’ or user manual a command. (man command name)
+                     It is advantages as the programmer who is new to commands will have a better understanding before executing any Linux commands.
+
+24) cat cammand ---> It is short for ‘concatenate’ and permits users to create files, redirect output, list the contents of a file, 
+                     and even concatenate multiple files.
+
+25) touch ---> it is used for creating empty files. (touch file1 file2 ...)
+
+26) top   ---> to disply cpu utilization memory, login id.
+
+27) crul  ---> it is a command-line tool to transfer data to or from a server, using any of the supported protocols 
+	      (HTTP, FTP, IMAP, POP3, SCP, SFTP, SMTP, TFTP, TELNET, LDAP, or FILE). 
+              This tool is preferred for automation since it is designed to work without user interaction. curl can transfer multiple files at once.
+              (curl https://www.geeksforgeeks.org,   curl http://site.{one, two, three}.com ).
+
+28) chown --> to change the ownership of file or group (sudo chown -R root:root file name)
+
+29) cat /etc/passwd --> to see the list of users
+
+30) findmnt  --> to see the mounted files on our system (findmnt -l) or (findmnt --fstab /mnt/external/disk2) find a filesystem using a mount point.
+
+31) head            --> it will display top 10 (or) first 10 lines of the file (head filename)
+
+32) tail            --> it will display last 10 lines of the file (tail filename)
+
+33) tac             --> it will display the content reverse order (tac filename)
+
+34) vi              --> text editor to write programs of text
+
+35) diff            --> it compares the content of two different files
+
+36) ping            --> check the connectivity status of the server
+
+37) history         --> review all the commend which you have entered
+
+38) hostname        --> display host name
+
+39) hostname -i     --> display hostname ip
+
+40) wc              --> given numbers,words,characters available in the file content (wc file name)
+                         number of lines
+                         number of words
+                         number of characters
+
+41) uniq            --> remove duplicates of file contnent/ it can remove only continuos duplicates (uniq file name)
+
+42) sed -->  replace,searching, deleting words in the file( cat filename | sed 's/any word/replace word/'  or cat filename | sed 's/any word/replace word/g')
+
+43) yum ---> The yum command is the primary tool for getting, installing, deleting, querying, and otherwise managing Red Hat Enterprise
+                  Linux RPM software packages from official Red Hat software repositories, as well as other third-party repositories
+
+44) du -skx * | sort -n --> to see which files are tacking more memory in sequential order.
+
+45) cp -rp source path destination path --> copy from one path to another path.(here r--> recursively, p--> parent)
+
+46)cp -R source 
+==============================================================================================================================================================
+				
+GIT          --> it is a version control tool
+
+GIT ADD      --> it is used for new/modified/delete files ( git add . or git add file name)
+
+GIT BRANCH   --> used to list/create/delete branches (git branch branch name(CREATE),  git branch -d branch name(DELETE), git branch --list)
+
+GIT STATUS   --> used to show the status of the branch ( git status)
+
+GIT CHECKOUT --> to switch from one branch to another branch (git checkout branch name)
+
+GIT FETCH   --> used to download the object and sets from remote repository to local system ( git fetch)
+
+GIT MERGE   --> join two branches, first switch to source branch and the use merge command (git merge target branch)
+
+GIT CLONE   --> it download the repository to local system (git clone repository url)
+
+GIT COMMIT  --> it is used for commit the code changes (git commit -m "any message")
+
+GIT PUSS    --> it is used for push the code changes from local system to remote repository ( git push origin branch name)
+
+GIT PULL    --> it is used for pull the code changes from git server repository and merge in local system ( git pull origin branchname)
+
+           --> to clone the files from any specific branch ( git clone -b branch name url)
+
+GIT LOG    --> it shows commit logs (git log --> it shows full commit history) (git log filename --> this shows commit log of this file)
+
+GIT SHOW   --> it shows latest commits 
+
+GIT RESET  --> reset commit history/changes
+	       git reset --soft     soft --> delete the commite messages and keep the changes in modified state.
+               git reset --hard     hard --> it deletes/revert both commit messges and code changes.
+
+GIT TAG   --> it will copy the current state code as copy..(create,list,delete or verify a tag objects signed with GPG.)
+
+
+===========================================================================================================================================
+       						
+MAVEN:           --> it is a open source tool buildupon a java language
+                 --> maven is a java build tool, maven reads pom.xml files and executes the goals.
+
+pre-requisities: ---> java, maven installation packages.
+
+maven is a plugin based tool,
+pom.xml          --> it is used to build the projects. it contains information of project and configuration information for the maven
+                     such as dependencies, build directory, source directory, test source directory, plugins, goals etc...
+pom              --> project object model.
+<group id>       --> organization name or company name,
+<artifact id>    --> application name/jar name
+<version>        --> version of the jar file.
+<packages>       --> jar/war/ear files.
+
+MAVEN HAVING 3 STANDARD BUILD LIFE CYCLES:
+1.clean
+2.deafult/build
+3.site
+
+clean           --> remove/delete target folders
+              (removing temporary files from the output directory, including generated source files, compiled classes and previous JAR files)
+
+default/build  :- a) resources  --> dowload the resources
+                  b) compile    --> compile the java code
+                  c) test       --> run the unit test cases
+                     verify     -->
+                  d) package    --> jar/war/ear packages will be created
+                  e) install    --> copy jar/war/ear packages to local repositiry
+                  f) deploy     --> uploade jar/war/ear files to remote repository
+
+site            --> generate project documents/reports.(create fresh documentation to create reports, deploy site, etc...)
+
+dot class files           --> while compile the java code to generate the dot class files.(It contains bytecode, which is binary program code)
+jar(java archive)files                --> group of dot files is a jar files.
+war(web application archive) files    --> group of jar files, like war.xml,metadata,web.info.
+ear(enterprice archive) files         --> group of war files, like csc(casecading stylesheet, html,cij)
+
+
+MAVEN HAS 3 REPOSITORIES:
+1. LOCAL repository   --> c:/user/username/.m2/repository(user path)Local repositories are the folders or directory on your local machine that 
+                          contains the catched jars and dependencies required by your project and other artifacts that are built by you.
+
+2. CENTRAL repository --> (http:repo.mvn.org) is available for downloading the dependencies in your maven project and also to release 
+                          the artifacts that you want to on the central repository. 
+ 
+3. REMOTE repository  --> (artifactory or nexus) The remote repositories are the resources that are located remotely and contain directory 
+                          having jars, library files, and plugins, and other artifacts that might be useful and are accessed by using the 
+                          protocols such as https:// of file:// protocol. 
+
+ MAVEN PLUGINS:
+  
+  build plugins: mvn-resource-plugins
+                 mvn-compile-plugins
+                 mvn-packege-plugins
+                 mvn-istall-plugins
+                 mvn-deploy-plugins
+
+  repository plugin:
+                 mvn-sure file-plugin (for test)
+
+VERSION :
+           snapshot 1.0 snapshot
+           <version> develop 1.0 snapshot</version>
+
+release:  release version will be overridden
+
+================================================================================================================================================
+
+
