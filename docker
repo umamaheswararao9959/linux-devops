@@ -1,0 +1,60 @@
+yum remove docker docker-common docker-selinux docker-engine-selinux docker-engine docker-ce
+cheking the docker already installed if intsalled remoiving
+
+
+ yum install -y yum-utils device-mapper-persistent-data lvm2
+ installing the supported utility pacakages to docker
+
+ 
+   yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+   creating the repositry
+   
+   
+    yum install docker-ce
+	installing docker
+	
+	
+ docker --version
+ checking docker version
+ 
+ 
+ docker pull imagename----> image pull from docker hub
+ 
+ docker image ---> to display image
+ 
+ docker run ----> image run as a container
+ 
+ docker ps  -----> disply containers are running or not
+ 
+ docke run -d  imagename ----> ditached mode
+ 
+ docker stop container id or container name ----> to stop running container.
+ 
+ docker ps -a -----> to show all containers including stoped containers also
+ 
+ docker start container id ---> to start the container 
+ 
+ docker rm container id ----> to remove container
+ 
+ docker rmi imageid ---> will remove images
+ 
+ docker run -d -pport number:old port number -name new name image name -----> changed the container name.
+ 
+ docker exec -it container id /bin/bash ----> enter into container
+ 
+ env --> to search environment sets.
+ 
+ docker volume ls ---> disply volume
+ 
+ docker run -p ----> it is display port number
+ 
+ docker logs container id ---> to display the logs of container 
+ 
+ docker network ls --> to display list of networks
+ 
+ docker network inspect -----> it will show my network
+ 
+ docker inspect ---> to observe each and every minute point(like watch man)
+ 
+ 
+ 
