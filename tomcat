@@ -1,0 +1,90 @@
+tomcat:
+=======================
+sudo yum update
+install the java if it is not available sudo yum install default-jdk
+
+download the tomcat file from google wget  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62.tar.gz
+--------------------------
+
+
+{     extract the downloaded file 
+sudo tar -xvzf /tmp/apache-tomcat-9*.tar.gz -C /opt/tomcat
+------------------------
+Create a systemd Unit File
+sudo vi /etc/systemd/system/tomcat.service
+-------------
+[Unit]
+Description=Tomcat 9 servlet container
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+Environment="JAVA_HOME=/usr/lib/jvm/default-java"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+
+Environment="CATALINA_BASE=/opt/tomcat/latest"
+Environment="CATALINA_HOME=/opt/tomcat/latest"
+Environment="CATALINA_PID=/opt/tomcat/latest/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+ExecStart=/opt/tomcat/latest/bin/startup.sh
+ExecStop=/opt/tomcat/latest/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
+---------------
+After that reload the deamon 
+sudo systemctl daemon-reload
+
+After reloading the deamon start the tomcat service 
+sudo systemctl start tomcat
+
+Then are able to see this 
+------------------
+* tomcat.service - Tomcat 9 servlet container
+   Loaded: loaded (/etc/systemd/system/tomcat.service; disabled; vendor preset: enabled)
+   Active: active (running) since Wed 2018-09-05 15:45:28 PDT; 20s ago
+  Process: 1582 ExecStart=/opt/tomcat/latest/bin/startup.sh (code=exited, status=0/SUCCESS)
+ Main PID: 1604 (java)
+    Tasks: 47 (limit: 2319)
+   CGroup: /system.slice/tomcat.service
+--------------------------
+sudo systemctl enable tomcat
+
+If needed adjust the firewall settings also 
+sudo ufw allow 8080/tcp  }
+
+
+
+under ---->  /opt/tomcat/conf# cat tomcat-users.xml
+---------------------------------
+<tomcat-users>
+<role rolename="manager-gui"/>
+<user username="admin" password="Admin" roles="manager-gui, manager-script, manager-admin, manager-status"/>
+</tomcat-users>
+------------------------------
+
+under -----> /opt/tomcat/webapps/manager/META-INF# cat context.xml
+--------------------------------
+<Context antiResourceLocking="false" privileged="true" >
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow=".*" />
+</Context>
+------------------------------------
+
+How to change the port number
+
+cd /home/root/opt/tomcat/conf/sudo vi server.xml
+
+change port number 
+
+connector port = 8080
+
+---------------------------
+
+
+For any tomcat reference visit to this site using this  "https://tomcat.apache.org/download-90.cgi"
